@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	
+		<div id="Jesus"></div>
+
+		<script>
+			
+			/*	
+				Busca Binaria : É um metodo de busca mais eficiente que a busca sequencial, 
+				porém apresenta a restrição de que somente pode ser aplicado em conjuntos
+				ordenados de dados. obs.: metodo interativo
+			
+			*/
+			
+			conjuntoArray = [8, 10, 17, 28, 32, 36, 45, 50, 100]; // array já ordenado
+			
+			var PesquisaBinariaRecursiva = {
+				
+				meio : 0,
+			
+				pesquisar : function(valor, inicio, fim){
+					
+					if(inicio > fim){
+						return -1;
+					}
+					
+					this.meio = parseInt( (inicio + fim ) / 2);
+					
+					console.log("inicio: " + inicio + ", meio: " + this.meio + ", fim: " + fim + ", array: " + conjuntoArray[this.meio]);
+					
+					if(valor == conjuntoArray[this.meio]){
+						
+						return this.meio; // encontrou o valor buscado		
+					} else if (valor < conjuntoArray[this.meio]){
+						
+						return PesquisaBinariaRecursiva.pesquisar(valor, inicio, this.meio - 1); // recalculando
+					}else{
+
+						return PesquisaBinariaRecursiva.pesquisar(valor, this.meio + 1, fim); // recalculando
+					}	
+					
+				}
+						
+			};
+			
+			document.getElementById("Jesus").innerHTML = PesquisaBinariaRecursiva.pesquisar(10, 0, conjuntoArray.length -1);
+			
+		</script>
+		
+		
+	</body>
+</html>
+
+
