@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	
+		<div id="Jesus"></div>
+
+		<script>
+			
+			/*	
+				Busca Binaria : É um metodo de busca mais eficiente que a busca sequencial, 
+				porém apresenta a restrição de que somente pode ser aplicado em conjuntos
+				ordenados de dados. obs.: metodo interativo
+			
+			*/
+			
+			conjuntoArray = [8, 10, 17, 28, 32, 36, 45, 50, 100]; // array já ordenado
+			
+			var PesquisaBinaria = {
+				
+				inicio : 0,
+				meio : 0,
+				fim : 0,			
+				pesquisar : function(valor){
+					
+					this.fim = conjuntoArray.length -1;
+					
+					while(this.inicio <= this.fim){
+						
+						/**
+						 *  A função parselnt() 'abaixo' analisa uma cadeia e retorna um número inteiro.
+						 *  pois no calculo para descobrir o meio do array é possivel que tenhamos 
+						 *  resultado fracionado, com isso o parseInt() garantirá um valor inteiro
+						 **/
+						this.meio = parseInt( (this.inicio + this.fim ) / 2); 
+						
+						console.log("inicio: " + this.inicio + ", meio: " + this.meio + ", fim: " + this.fim + ", array: " + conjuntoArray[this.meio]);
+						
+						if(valor == conjuntoArray[this.meio]){
+						
+							return this.meio; // encontrou o valor buscado		
+						} else if (valor < conjuntoArray[this.meio]){
+							
+							this.fim = this.meio - 1; // recalculando 
+						}else{
+
+							this.inicio = this.meio + 1; // recalculando
+						}	
+						
+					}
+					
+					return -1; // não encontro a chave
+				}
+						
+			};
+			
+			document.getElementById("Jesus").innerHTML = PesquisaBinaria.pesquisar(10);
+			
+		</script>
+		
+		
+	</body>
+</html>
+
+
