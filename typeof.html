@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		/*
+			Quero conferir como verifico se os atributos passado no objeto estão
+			existentes ou não
+		*/
+		var Produto = {
+            produto : "Água mineral",
+            preco_unitario: 3.00,
+            qtd_itens : 1
+        }
+
+        var arrayProdutos = [];
+        arrayProdutos.push(Produto);
+        arrayProdutos.push(Produto); // inserindo a segunda vez, apenas para efeito de teste
+
+        var arrayPagamentoDetalhe = [];
+
+		var Objeto = {
+            produtos : arrayProdutos,
+            //pagamentos : arrayFormasPagamentos,
+            pagamentosDetalhes : arrayPagamentoDetalhe,
+            cod_reserva : '234566'
+
+        }
+
+        
+
+
+        class Servico {
+        	add(Obj){
+
+        		console.log(typeof Obj.produtos); // retornou object
+        		console.log(typeof Obj.cod_reserva); // retonou string
+        		console.log(typeof Obj.pagamentos); // Quando não encontra o atributo é retornado undefined
+        		console.log(typeof Obj.pagamentosDetalhes); // também retornou object. Obs o mesmo é um array vazio
+
+        		console.log(Obj.produtos.length); // retornou a quantidade de itens no array
+        		console.log(Obj.pagamentosDetalhes.length); // retornou a quantidade de itens no array
+
+        		if(typeof Obj.produtos == 'object' && Obj.produtos.length > 0){
+        			console.log("Sim o array possui elementos"); // retorna OK
+        		}
+
+        		if(typeof Obj.pagamentosDetalhes == 'object' && Obj.pagamentosDetalhes.length > 0){
+        			console.log("Sim o array possui elementos"); 
+        		}else{
+        			console.log('Não retorna valores');
+        		}
+
+        	}
+        } 
+
+        var servico = new Servico();
+        servico.add(Objeto);
+
+
+        /*
+			Uma boa maneira de checar se possui valores no array
+        */
+	</script>
+</body>
+</html>
